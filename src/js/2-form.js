@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'feedback-form-state';
 const formEl = document.querySelector('.feedback-form');
 
-const formData = {
+let formData = {
   email: '',
   message: '',
 };
@@ -21,9 +21,13 @@ function handleSubmit(event) {
     }
   }
 
-  console.log(formData);
+  console.log('User data:', formData);
 
   localStorage.removeItem(STORAGE_KEY);
+  formData = {
+    email: '',
+    message: '',
+  };
   event.currentTarget.reset();
 }
 
@@ -53,9 +57,12 @@ function getDataFromLS() {
 
   if (!data) {
     return;
-  }
-
-  for (const key in data) {
-    formEl.elements[key].value = data[key];
+  } else {
+    formData = data;
+    for (const key in formData) {
+      if (formData[key]) {
+        formEl.elements[key].value = formData[key];
+      }
+    }
   }
 }
