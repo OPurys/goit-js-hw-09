@@ -9,6 +9,12 @@ p {
   margin: 0;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -26,6 +32,16 @@ a {
 
 button {
   cursor: pointer;
+  border: none;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  outline: none;
 }
 
 img {
